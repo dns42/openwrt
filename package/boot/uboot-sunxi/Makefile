@@ -295,6 +295,12 @@ define U-Boot/Bananapi_M2_Ultra
   BUILD_DEVICES:=sinovoip_bananapi-m2-ultra
 endef
 
+define U-Boot/bananapi_m2_zero
+  BUILD_SUBTARGET:=cortexa7
+  NAME:=Bananapi M2 Zero
+  BUILD_DEVICES:=sinovoip_bananapi-m2-zero
+endef
+
 UBOOT_TARGETS := \
 	a64-olinuxino \
 	a64-olinuxino-emmc \
@@ -305,6 +311,7 @@ UBOOT_TARGETS := \
 	A20-OLinuXino-Lime2-eMMC \
 	A20-OLinuXino_MICRO \
 	bananapi_m2_plus_h3 \
+	bananapi_m2_zero \
 	Bananapi \
 	Bananapi_M2_Ultra \
 	Bananapro \
