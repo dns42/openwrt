@@ -1,0 +1,39 @@
+From 041bc494ef835354dc97710e15bbc43d988ea83e Mon Sep 17 00:00:00 2001
+From: Daniel Stodden <dns@arista.com>
+Date: Fri, 18 Dec 2020 20:19:36 -0800
+Subject: [PATCH] sun8i: enable emac on Banana Pi BPI-M2-Zero
+
+Signed-off-by: Daniel Stodden <daniel.stodden@gmail.com>
+---
+ arch/arm/boot/dts/sun8i-h2-plus-bananapi-m2-zero.dts | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+diff --git a/arch/arm/boot/dts/sun8i-h2-plus-bananapi-m2-zero.dts b/arch/arm/boot/dts/sun8i-h2-plus-bananapi-m2-zero.dts
+index 4c6704e..46f7732 100644
+--- a/arch/arm/boot/dts/sun8i-h2-plus-bananapi-m2-zero.dts
++++ b/arch/arm/boot/dts/sun8i-h2-plus-bananapi-m2-zero.dts
+@@ -20,6 +20,7 @@
+ 	aliases {
+ 		serial0 = &uart0;
+ 		serial1 = &uart1;
++		ethernet0 = &emac;
+ 	};
+ 
+ 	chosen {
+@@ -78,6 +79,13 @@
+ 	status = "okay";
+ };
+ 
++&emac {
++	phy-handle = <&int_mii_phy>;
++	phy-mode = "mii";
++	allwinner,leds-active-low;
++	status = "okay";
++};
++
+ &mmc0 {
+ 	vmmc-supply = <&reg_vcc3v3>;
+ 	bus-width = <4>;
+-- 
+2.20.1
+
