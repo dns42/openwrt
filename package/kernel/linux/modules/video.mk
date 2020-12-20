@@ -395,18 +395,64 @@ define KernelPackage/video-core
   TITLE=Video4Linux support
   DEPENDS:=@PCI_SUPPORT||USB_SUPPORT +PACKAGE_kmod-i2c-core:kmod-i2c-core
   KCONFIG:= \
-	CONFIG_MEDIA_SUPPORT \
+	CONFIG_MEDIA_SUPPORT=m \
 	CONFIG_MEDIA_CAMERA_SUPPORT=y \
-	CONFIG_VIDEO_DEV \
-	CONFIG_VIDEO_V4L1=y \
-	CONFIG_VIDEO_ALLOW_V4L1=y \
-	CONFIG_VIDEO_CAPTURE_DRIVERS=y \
-	CONFIG_V4L_USB_DRIVERS=y \
-	CONFIG_V4L_PCI_DRIVERS=y \
+	CONFIG_VIDEO_DEV=m \
+	CONFIG_MEDIA_CONTROLLER=y \
+	CONFIG_VIDEO_V4L2_SUBDEV_API=y \
+	CONFIG_VIDEO_V4L2=m \
+	CONFIG_V4L_USB_SUPPORT=y \
+	CONFIG_V4L_PCI_SUPPORT=y \
 	CONFIG_V4L_PLATFORM_DRIVERS=y \
-	CONFIG_V4L_ISA_PARPORT_DRIVERS=y
+	CONFIG_VIDEO_MUX=n \
+	CONFIG_VIDEO_XILINX=n \
+	CONFIG_VIDEO_TDA1997X=n \
+	CONFIG_VIDEO_ADV748X=n \
+	CONFIG_VIDEO_ADV7604=n \
+	CONFIG_VIDEO_ADV7842=n \
+	CONFIG_VIDEO_TC358743=n \
+	CONFIG_VIDEO_ADV7511=n \
+	CONFIG_VIDEO_AD9389B=n \
+	CONFIG_VIDEO_IMX214=n \
+	CONFIG_VIDEO_IMX258=n \
+	CONFIG_VIDEO_IMX274=n \
+	CONFIG_VIDEO_IMX319=n \
+	CONFIG_VIDEO_IMX355=n \
+	CONFIG_VIDEO_OV2680=n \
+	CONFIG_VIDEO_OV2685=n \
+	CONFIG_VIDEO_OV5640=n \
+	CONFIG_VIDEO_OV5645=n \
+	CONFIG_VIDEO_OV5647=n \
+	CONFIG_VIDEO_OV5670=n \
+	CONFIG_VIDEO_OV5675=n \
+	CONFIG_VIDEO_OV7251=n \
+	CONFIG_VIDEO_OV8856=n \
+	CONFIG_VIDEO_OV9650=n \
+	CONFIG_VIDEO_OV13858=n \
+	CONFIG_VIDEO_MT9M001=n \
+	CONFIG_VIDEO_MT9M032=n \
+	CONFIG_VIDEO_MT9P031=n \
+	CONFIG_VIDEO_MT9T001=n \
+	CONFIG_VIDEO_MT9V032=n \
+	CONFIG_VIDEO_M5MOLS=n \
+	CONFIG_VIDEO_S5K6AA=n \
+        CONFIG_VIDEO_S5K6A3=n \
+        CONFIG_VIDEO_S5K4ECGX=n \
+        CONFIG_VIDEO_S5K5BAF=n \
+        CONFIG_VIDEO_SMIAPP=n \
+        CONFIG_VIDEO_ET8EK8=n \
+        CONFIG_VIDEO_S5C73M3=n \
+        CONFIG_VIDEO_AD5820=n \
+        CONFIG_VIDEO_AK7375=n \
+        CONFIG_VIDEO_DW9714=n \
+        CONFIG_VIDEO_DW9807_VCM=n \
+        CONFIG_VIDEO_ADP1653=n \
+        CONFIG_VIDEO_LM3560=n \
+        CONFIG_VIDEO_LM3646=n \
+        CONFIG_VIDEO_ST_MIPID02=n \
+        CONFIG_VIDEO_GS1662=n
   FILES:= \
-	$(LINUX_DIR)/drivers/media/$(V4L2_DIR)/videodev.ko
+	$(LINUX_DIR)/drivers/media/$(V4L2_DIR)/v4l2-fwnode.ko
   AUTOLOAD:=$(call AutoLoad,60, videodev v4l2-common)
 endef
 
@@ -440,7 +486,7 @@ define KernelPackage/video-videobuf2
 	$(LINUX_DIR)/drivers/media/common/videobuf2/videobuf2-common.ko \
 	$(LINUX_DIR)/drivers/media/common/videobuf2/videobuf2-v4l2.ko \
 	$(LINUX_DIR)/drivers/media/common/videobuf2/videobuf2-memops.ko \
-	$(LINUX_DIR)/drivers/media/common/videobuf2/videobuf2-vmalloc.ko
+	$(LINUX_DIR)/drivers/media/common/videobuf2/videobuf2-dma-contig.ko
   AUTOLOAD:=$(call AutoLoad,65,videobuf2-core videobuf-v4l2 videobuf2-memops videobuf2-vmalloc)
   $(call AddDepends/video)
 endef
