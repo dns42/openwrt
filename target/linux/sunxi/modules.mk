@@ -97,3 +97,27 @@ define KernelPackage/sound-soc-sunxi-spdif/description
 endef
 
 $(eval $(call KernelPackage,sound-soc-sunxi-spdif))
+
+define KernelPackage/sun4i-csi
+  TITLE:=Allwinner A10/A20 CMOS Sensor Interface
+  KCONFIG:= \
+    CONFIG_VIDEO_SUN4I_CSI
+  FILES:= \
+    $(LINUX_DIR)/drivers/media/platform/sunxi/sun4i-csi/sun4i-csi.ko
+  AUTOLOAD:=$(call AutoProbe,sun4i-csi)
+  $(call AddDepends/video,@TARGET_sunxi)
+endef
+
+$(eval $(call KernelPackage,sun4i-csi))
+
+define KernelPackage/sun6i-csi
+  TITLE:=Allwinner V3s CMOS Sensor Interface
+  KCONFIG:= \
+    CONFIG_VIDEO_SUN6I_CSI
+  FILES:= \
+    $(LINUX_DIR)/drivers/media/platform/sunxi/sun6i-csi/sun6i-csi.ko
+  AUTOLOAD:=$(call AutoProbe,sun6i-csi)
+  $(call AddDepends/video,@TARGET_sunxi)
+endef
+
+$(eval $(call KernelPackage,sun6i-csi))

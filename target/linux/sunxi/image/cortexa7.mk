@@ -218,7 +218,8 @@ define Device/sinovoip_bananapi-m2-zero
   DEVICE_VENDOR := Sinovoip
   DEVICE_MODEL := Banana Pi M2 Zero
   DEVICE_PACKAGES:=kmod-rtc-sunxi kmod-brcmfmac	\
-	brcmfmac-firmware-43430-sdio wpad-basic-wolfssl
+	brcmfmac-firmware-43430-sdio wpad-basic-wolfssl \
+	sun6i-csi
   SOC := sun8i-h2-plus
 endef
 TARGET_DEVICES += sinovoip_bananapi-m2-zero
